@@ -1,0 +1,5 @@
+name: cfs_tensor_prediction
+channels:
+  - defaults
+dependencies:
+  - python
