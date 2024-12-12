@@ -1,0 +1,57 @@
+{
+    "verbosity_level": 1,    
+    "solver":
+    {
+        "linsolver_amgcl_params_file": "gmres_generic_config.json",
+        "linsolver_hypre_params_file": "gmres_hypre_generic_config.json",
+        "tolerance": 5.0e-6
+    },    
+    "device":
+    {
+        "omp_num_threads": 96
+    },
+    "domain":{
+        "adaptation": "uniformal",
+        "grid_size_x_y_z": [700,700,700],
+        "domian_size_x_y_z":[700.0,700.0,700.0],
+        "voxel_size": 5e-6
+    },
+    "files":{
+        "folder": "/media/data/tolstygin/ml/iranian/700",
+        "raw": "14.raw",
+        "result_pressure_raw": "p_Pf.raw",
+        "results_abs_vel_raw": "u_abs_Pf.raw",
+        "plot_rescaled_velocities": true,
+        "save_permeability": "14_x.dat"  
+    },
+    "right_hand_side":{
+        "external_function": false
+    }, 
+
+"boundary":{ 
+        "velocities":{            
+            "dirichlet":{ 
+                "x0z":[0.0, 0.0, 0.0],
+                "x1z":[0.0, 0.0, 0.0],
+                "xy0":[0.0, 0.0, 0.0],
+                "xy1":[0.0, 0.0, 0.0]
+            },
+            "neumann":{
+                "0yz":0,
+                "1yz":0
+            }
+        },
+        "pressure":     
+        {
+            "dirichlet":{
+                "0yz":10.0,
+                "1yz":0.0
+            },
+            "neumann":{
+                "x0z":0.0,
+                "x1z":0.0,
+                "xy0":0.0,
+                "xy1":0.0
+            }            
+        }
+    }}
