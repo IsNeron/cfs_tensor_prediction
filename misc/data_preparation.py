@@ -7,27 +7,11 @@ CFS_OUT_PATH = Path(r'data\united\cfs')
 STOKES_PATH = Path(r'data\raw\permeability')
 STOKES_OUT_PATH = Path(r'data\united\perm')
 
-def prepare_data(path: Path) -> np.array:
-    res = []
-    for file in path.glob('**/*'):
-        a = np.genfromtxt(file, delimiter=',', skip_header=True)
-        res.append(a)
-
-    return np.array(res)
-
-
-
-def prepare_labels(path: Path) -> np.array:
-    res = []
-    for file in path.glob('**/*'):
-        a = np.genfromtxt(file, delimiter=',')
-        res.append(a)
-
-    return np.array(res)
-
-
-
-def _prepare_cfs(path: Path, out: Path, count: int) -> None:
+def _prepare_cfs(
+    path: Path, 
+    out: Path, 
+    count: int,
+) -> None:
     i = 0
     while i <= count-1:
         res = {}
@@ -44,7 +28,11 @@ def _prepare_cfs(path: Path, out: Path, count: int) -> None:
 
 
 
-def _prepare_stokes(path: Path, out: Path, count: int) -> None:
+def _prepare_stokes(
+    path: Path, 
+    out: Path, 
+    count: int,
+) -> None:
     i = 0
     while i <= count-1:
         res = []
@@ -60,8 +48,5 @@ def _prepare_stokes(path: Path, out: Path, count: int) -> None:
         i += 1   
 
 
-_prepare_cfs(CFS_PATH, CFS_OUT_PATH, 50)
-_prepare_stokes(STOKES_PATH, STOKES_OUT_PATH, 50)
-
-a = prepare_data(CFS_OUT_PATH)
-b = prepare_labels(STOKES_OUT_PATH)
+# _prepare_cfs(CFS_PATH, CFS_OUT_PATH, 50)
+# _prepare_stokes(STOKES_PATH, STOKES_OUT_PATH, 50)
