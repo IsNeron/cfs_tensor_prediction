@@ -11,6 +11,7 @@ test_loader = DataLoader(dataset[1], batch_size=1)
 
 device = 'cpu'
 model = DNN().to(device)
+model.train(True)
 # print(summary(model, (4, 3, 150)))  
 criterion = torch.nn.L1Loss()
 optimizer = torch.optim.SGD(model.parameters(), lr=1e-5, momentum=0.9, weight_decay=1e-5)
